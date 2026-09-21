@@ -10,5 +10,6 @@ data class TaskEntity(
     val description: String,
     val isCompleted: Boolean,
     val syncStatus: String,
+    val createdAt: Long,
     val updatedAt: Long
 )

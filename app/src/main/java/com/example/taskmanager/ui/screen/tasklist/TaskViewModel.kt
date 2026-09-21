@@ -2,9 +2,9 @@ package com.example.taskmanager.ui.screen.tasklist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.taskmanager.data.repository.TaskRepository
 import com.example.taskmanager.domain.model.Task
 import com.example.taskmanager.domain.model.TaskDraft
+import com.example.taskmanager.domain.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +20,7 @@ class TaskViewModel @Inject constructor(
     val tasks: StateFlow<List<Task>> = repository.getTasks()
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.Companion.WhileSubscribed(5000),
+            started = SharingStarted.WhileSubscribed(5000),
             initialValue = emptyList()
         )
 

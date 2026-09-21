@@ -2,6 +2,8 @@ package com.example.taskmanager.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.taskmanager.data.local.dao.TaskDao
+import com.example.taskmanager.data.local.dao.TaskDraftDao
 import com.example.taskmanager.data.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -25,5 +27,10 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideTaskDao(db: AppDatabase) = db.taskDao()
+    @Singleton
+    fun provideTaskDao(db: AppDatabase): TaskDao = db.taskDao()
+
+    @Provides
+    @Singleton
+    fun provideTaskDraftDao(db: AppDatabase): TaskDraftDao = db.taskDraftDao()
 }

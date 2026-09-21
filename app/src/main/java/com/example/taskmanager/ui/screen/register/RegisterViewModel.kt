@@ -1,5 +1,6 @@
 package com.example.taskmanager.ui.screens.register
 
+import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.taskmanager.domain.usecase.SignUpUseCase
@@ -21,6 +22,11 @@ class RegisterViewModel @Inject constructor(
     fun register(email: String, pass: String, confirmPass: String) {
         if (email.isBlank() || pass.isBlank() || confirmPass.isBlank()) {
             _uiState.value = RegisterUiState.Error("Por favor completa todos los campos")
+            return
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _uiState.value = RegisterUiState.Error("Formato de correo inválido")
             return
         }
 

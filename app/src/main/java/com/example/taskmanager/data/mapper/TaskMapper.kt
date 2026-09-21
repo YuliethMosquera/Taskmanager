@@ -10,6 +10,7 @@ fun TaskEntity.toDomain(): Task {
         title = title,
         description = description,
         isCompleted = isCompleted,
+        createdAt = createdAt,
         updatedAt = updatedAt
     )
 }
@@ -21,6 +22,7 @@ fun Task.toEntity(syncStatus: String = "SYNCED"): TaskEntity {
         description = description,
         isCompleted = isCompleted,
         syncStatus = syncStatus,
+        createdAt = createdAt,
         updatedAt = updatedAt
     )
 }
@@ -32,6 +34,7 @@ fun TaskDocument.toEntity(syncStatus: String = "SYNCED"): TaskEntity {
         description = description,
         isCompleted = isCompleted,
         syncStatus = syncStatus,
+        createdAt = createdAt,
         updatedAt = updatedAt
     )
 }
@@ -42,6 +45,7 @@ fun TaskEntity.toDocument(): TaskDocument {
         title = title,
         description = description,
         isCompleted = isCompleted,
+        createdAt = createdAt,
         updatedAt = updatedAt
     )
 }
